@@ -1,0 +1,20 @@
+name: Close Issue Trigger
+
+on:
+  issues:
+    types: [opened, closed]  # Triggers for both issue creation and closure
+
+jobs:
+  document-issue-creation:
+    if: ${{ github.event.action == 'opened' }}  # Only runs for issue creation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue creation
+        run: echo "Issue created"
+
+  document-issue-closure:
+    if: ${{ github.event.action == 'closed' }}  # Only runs for issue closure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue closure
+        run: echo "Issue closed }}"
